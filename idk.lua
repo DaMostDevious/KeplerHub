@@ -3,15 +3,29 @@
 local plrs = game:GetService("Players")
 local lp = plrs.LocalPlayer
 
-repeat wait() until lp ~= nil end
+repeat wait() until lp ~= nil
 
 -- Functions
 
 local function Fly(v)
     if v == true then
+
+        local torso = lp.Character.Torso
+
+        if torso == nil then
+            torso = lp.Character.LowerTorso
+        end
+
         local bg = Instance.new("BodyGyro", lp.Character.Torso)
     else
+        local torso = lp.Character.Torso
 
+        if torso == nil then
+            torso = lp.Character.LowerTorso
+        end
+
+        torso.BodyGyro:Destroy()
+        print("bozo")
     end
 end
 
@@ -37,7 +51,9 @@ local GeneralGlobal = GlobalTab:AddSection({
 GeneralGlobal:AddToggle({
     Name = "Flight",
     Default = false,
-    Callback = Fly(Value)
+    Callback = function(Value)
+        Fly(Value)
+    end
 })
 
 OrionLib:Init()
