@@ -10,15 +10,15 @@ repeat wait() until lp ~= nil
 local function Fly(v)
     if v == true then
 
-        local torso = lp.Character.Torso
+        local torso = lp.Character:FindFirstChild("Torso")
 
         if torso == nil then
             torso = lp.Character.LowerTorso
         end
 
-        local bg = Instance.new("BodyGyro", lp.Character.Torso)
+        local bg = Instance.new("BodyGyro", torso)
     else
-        local torso = lp.Character.Torso
+        local torso = lp.Character:FindFirstChild("Torso")
 
         if torso == nil then
             torso = lp.Character.LowerTorso
